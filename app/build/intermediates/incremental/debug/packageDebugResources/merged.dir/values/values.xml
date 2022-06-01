@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="AddFindList">"新增撿到貼文"</string>
+    <string name="AddLostList">"新增遺失貼文"</string>
+    <string name="Click">"點擊"</string>
+    <string name="Confirm">"完成確認"</string>
+    <string name="EditPost">"編輯貼文"</string>
+    <string name="FindList">"撿到物貼文"</string>
+    <string name="Finder">"我是撿到方"</string>
+    <string name="Loser">"我是遺失方"</string>
+    <string name="LostList">"遺失物貼文"</string>
+    <string name="MyPost">"我的貼文"</string>
+    <string name="NotRead">"未讀"</string>
+    <string name="Notification">"通知"</string>
+    <string name="Read">"已讀"</string>
+    <string name="app_name">SS-team2</string>
+    <string name="ball">ball</string>
+    <string name="description">"描述..."</string>
+    <string name="home">home</string>
+    <style name="Theme.SSteam2" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+</resources>

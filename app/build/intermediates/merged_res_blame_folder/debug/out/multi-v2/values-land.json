@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.ss_team2.app-mergeDebugResources-33:/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Ryanke\\.gradle\\caches\\transforms-3\\8de9a9f73d06237ed0342723ccd6ead1\\transformed\\ui-1.1.0-beta01\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}
