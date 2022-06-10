@@ -2,10 +2,13 @@ package com.example.ss_team2.presentation.ui
 
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
@@ -40,7 +43,7 @@ import com.example.ss_team2.presentation.navigation.Screen
 
 @Composable
 fun PickImageFromGallery(){
-
+    val first = remember { mutableStateOf(false) }
     var imageUri by remember { mutableStateOf<Uri?>(null)}
     val context = LocalContext.current
     val bitmap = remember {
@@ -59,30 +62,79 @@ fun PickImageFromGallery(){
             if(Build.VERSION.SDK_INT <28 ){
                 bitmap.value = MediaStore.Images
                     .Media.getBitmap(context.contentResolver, it)
+                Log.d("Args" ,"1")
             }else {
                 val source = ImageDecoder.createSource(context.contentResolver, it)
                 bitmap.value = ImageDecoder.decodeBitmap(source)
+                Log.d("Args" ,source.toString())
             }
         }
-
+        val icon = BitmapFactory.decodeResource(context.getResources(),
+        R.drawable.defaultpicture)
+        if(first.value) bitmap.value = bitmap.value else bitmap.value = icon
         bitmap.value?.let { btm ->
             Image(
                 bitmap = btm.asImageBitmap(),
                 contentDescription = null,
                 modifier = Modifier
-                    .height(160.dp)
-                    .width(160.dp)
-                    .clip(RectangleShape)
                     .padding(4.dp)
+                    .clip(CircleShape)
+                    .width(120.dp)
+                    .height(120.dp)
+                    .clickable {
+                        first.value = true
+                        launcher.launch("image/*")
+                    }
             )
         }
     }
-
-    Button(onClick = {launcher.launch("image/*")},
-    modifier = Modifier.size(144.dp),
-        shape = RoundedCornerShape(50),
+}
+@Composable
+fun PickImageFromGallery2(){
+    val first = remember { mutableStateOf(false) }
+    var imageUri by remember { mutableStateOf<Uri?>(null)}
+    val context = LocalContext.current
+    val bitmap = remember {
+        mutableStateOf<Bitmap?>(null)
+    }
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ){
+            uri: Uri? ->
+        imageUri = uri
+    }
+    Row(
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = "選取照片", fontSize = 20.sp)
+        imageUri?.let {
+            if(Build.VERSION.SDK_INT <28 ){
+                bitmap.value = MediaStore.Images
+                    .Media.getBitmap(context.contentResolver, it)
+                Log.d("Args" ,"1")
+            }else {
+                val source = ImageDecoder.createSource(context.contentResolver, it)
+                bitmap.value = ImageDecoder.decodeBitmap(source)
+                Log.d("Args" ,source.toString())
+            }
+        }
+        val icon = BitmapFactory.decodeResource(context.getResources(),
+            R.drawable.defaultpicture)
+        if(first.value) bitmap.value = bitmap.value else bitmap.value = icon
+        bitmap.value?.let { btm ->
+            Image(
+                bitmap = btm.asImageBitmap(),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(4.dp)
+                    .clip(RectangleShape)
+                    .height(160.dp)
+                    .width(160.dp)
+                    .clickable {
+                        first.value = true
+                        launcher.launch("image/*")
+                    }
+            )
+        }
     }
 }
 
@@ -93,6 +145,7 @@ fun AnonymousUserCard(
     @StringRes str: Int,
     @DrawableRes drawable: Int
 ){
+    val checkedState = remember { mutableStateOf(false) }
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -119,7 +172,7 @@ fun AnonymousUserCard(
             color = Color(0x66,0x70,0x80),
             fontSize = 8.sp
         )
-        val checkedState = remember { mutableStateOf(false) }
+
         Switch(
             checked = checkedState.value,
             onCheckedChange = { checkedState.value = it },
@@ -158,7 +211,7 @@ fun EditItemCard(
 //
 //                }
 //        )
-        PickImageFromGallery()
+        PickImageFromGallery2()
         Column(modifier = Modifier) {
             WhatAndWhereColElementClickable(what = what,
                 where = where)
