@@ -76,6 +76,7 @@ fun PickImageFromGallery(){
             Image(
                 bitmap = btm.asImageBitmap(),
                 contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(4.dp)
                     .clip(CircleShape)
@@ -124,6 +125,7 @@ fun PickImageFromGallery2(){
             Image(
                 bitmap = btm.asImageBitmap(),
                 contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(4.dp)
                     .clip(RectangleShape)
