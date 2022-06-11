@@ -15,17 +15,19 @@ import com.example.ss_team2.ui.theme.TextGray
 
 @Composable
 fun PersonalInfo(
-    @DrawableRes image: Int,
+     image: String?,
     schoolName: String,
     toolAmount: Int,
     point: Int
 ) {
+
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(20.dp),
         modifier = Modifier.padding(top = 20.dp)
     ) {
-        PickImageFromGallery()
+        PickImageFromGallery(BackendUri = image)
         Text(
             text = schoolName
         )

@@ -40,7 +40,7 @@ fun Shop(
 //    val myMoney by userViewModel.userCoin.collectAsState()
 
     Column {
-        Title(money = user.userCoin, /*navController = navController*/)
+        Title(money = user.userCoin, navController = navController)
         Divider(startIndent = 0.dp, thickness = 3.dp, color = Color.Black)
 
         LazyColumn {
@@ -493,7 +493,7 @@ fun Shop(
 fun Title(
     modifier: Modifier = Modifier,
     money: Int,
-    //navController: NavController
+    navController: NavController
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -510,7 +510,7 @@ fun Title(
                 .size(32.dp)
                 .padding(start = 8.dp)
                 .clickable() {
-                    //navController.popBackStack()
+                    navController.popBackStack()
                 }
         )
         Text(

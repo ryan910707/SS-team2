@@ -44,11 +44,17 @@ import com.example.ss_team2.type.PostCreateInput
 import com.example.ss_team2.ui.theme.SSteam2Theme
 
 @Composable
-fun PickImageFromGallery(){
+fun PickImageFromGallery(BackendUri: String?){
     val first = remember { mutableStateOf(false) }
+
+
+
     var imageUri by remember { mutableStateOf<Uri?>(null)}
     val context = LocalContext.current
     val bitmap = remember {
+        mutableStateOf<Bitmap?>(null)
+    }
+    val Backendbitmap = remember {
         mutableStateOf<Bitmap?>(null)
     }
     val launcher = rememberLauncherForActivityResult(
@@ -71,9 +77,16 @@ fun PickImageFromGallery(){
                 Log.d("Args" ,source.toString())
             }
         }
-        val icon = BitmapFactory.decodeResource(context.getResources(),
-            R.drawable.defaultpicture)
-        if(first.value) bitmap.value = bitmap.value else bitmap.value = icon
+        val BackendUriConverted  = Uri.parse(BackendUri)
+        if(Build.VERSION.SDK_INT <28 ){
+            Backendbitmap.value = MediaStore.Images
+                .Media.getBitmap(context.contentResolver, BackendUriConverted)
+
+        }else {
+            val Backendsource = ImageDecoder.createSource(context.contentResolver, BackendUriConverted)
+            Backendbitmap.value = ImageDecoder.decodeBitmap(Backendsource)
+        }
+
         bitmap.value?.let { btm ->
             Image(
                 bitmap = btm.asImageBitmap(),
