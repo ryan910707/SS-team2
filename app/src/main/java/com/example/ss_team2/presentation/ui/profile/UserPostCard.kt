@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ss_team2.presentation.navigation.Screen
+import com.example.ss_team2.presentation.ui.PickImageFromGallery2
+import com.example.ss_team2.presentation.viewModel.PostViewModel
 import com.example.ss_team2.ui.theme.FindHint
 import com.example.ss_team2.ui.theme.FindHintDark
 import com.example.ss_team2.ui.theme.LostHint
@@ -34,7 +36,8 @@ fun UserPostCard(
     where: String,
     type: String,
     onClick: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
+    postViewModel: PostViewModel
 ) {
 
     Surface(
@@ -52,12 +55,13 @@ fun UserPostCard(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.umbrella1),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.size(72.dp)
-            )
+            PickImageFromGallery2(postViewModel = postViewModel)
+//            Image(
+//                painter = painterResource(id = R.drawable.umbrella1),
+//                contentDescription = null,
+//                contentScale = ContentScale.Crop,
+//                modifier = Modifier.size(72.dp)
+//            )
             PostInfo(
                 text = "What",
                 tags = what,

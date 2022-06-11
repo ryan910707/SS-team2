@@ -22,6 +22,7 @@ import com.example.ss_team2.presentation.viewModel.HelperViewModel
 import com.example.ss_team2.presentation.viewModel.PostViewModel
 import com.example.ss_team2.presentation.viewModel.UserViewModel
 import com.example.ss_team2.ui.theme.TextGray
+import okhttp3.internal.userAgent
 
 @Composable
 fun MyPostFinalScreen(
@@ -60,6 +61,7 @@ fun MyPostFinalScreen(
             postOwner = user.userName,
             helperViewModel = helperViewModel,
             postViewModel = postViewModel,
+            userViewModel = userViewModel
         )
     }
 }

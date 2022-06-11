@@ -36,6 +36,7 @@ fun PostListLazyScreen(
             if (!post.hasDone) {
                 PostPreviewElement(
                     post = post,
+                    postViewModel = postViewModel,
                     onClick = {
                         helperViewModel.getAllPostHelpers(post.postId)
                         postViewModel.getPostById(postId = post.postId)

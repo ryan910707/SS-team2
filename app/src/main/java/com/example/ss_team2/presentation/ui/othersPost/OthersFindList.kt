@@ -60,6 +60,7 @@ fun OthersFindListFinalScreen(
             postOwner = otherUser.userName,
             helperViewModel = helperViewModel,
             postViewModel = postViewModel,
+            userViewModel = userViewModel
         )
     }
 }

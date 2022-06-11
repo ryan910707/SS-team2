@@ -19,7 +19,8 @@ fun PostListLazyScreen(
     postOwner: String,
     modifier: Modifier = Modifier,
     helperViewModel: HelperViewModel,
-    postViewModel: PostViewModel
+    postViewModel: PostViewModel,
+    userViewModel: UserViewModel
 ) {
 
     val helpers by helperViewModel.helpers.collectAsState()
@@ -27,7 +28,7 @@ fun PostListLazyScreen(
     LazyColumn(
         modifier = Modifier
     ) {
-        item { UserCard(userName = postOwner, drawable = R.drawable.default_avatar) }
+        item { UserCard(userName = postOwner, drawable = R.drawable.default_avatar, userViewModel = userViewModel) }
         item {
             PostItemCard(
                 postViewModel = postViewModel
@@ -35,7 +36,7 @@ fun PostListLazyScreen(
         }
         item { Spacer(modifier = Modifier.height(10.dp)) }
         items(helpers) { item ->
-            UserCard(userName = item.helperName+"協助歸還了物品", drawable = R.drawable.default_avatar)
+            UserCard(userName = item.helperName+"協助歸還了物品", drawable = R.drawable.default_avatar, userViewModel = userViewModel)
         }
     }
 }

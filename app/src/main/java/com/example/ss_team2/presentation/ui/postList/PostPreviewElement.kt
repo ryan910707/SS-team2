@@ -30,13 +30,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ss_team2.data.data_source.Post
+import com.example.ss_team2.presentation.ui.PickImageFromGallery2
 import com.example.ss_team2.presentation.ui.utility.WhatAndWhereColElement
+import com.example.ss_team2.presentation.viewModel.PostViewModel
 import com.example.ss_team2.ui.theme.TextGray
 
 @Composable
 fun PostPreviewElement(
     post: Post,
     onClick: () -> Unit,
+    postViewModel: PostViewModel
 ) {
     val context = LocalContext.current
     val bitmap = remember {
@@ -54,16 +57,19 @@ fun PostPreviewElement(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(24.dp),
-            modifier = Modifier.width(280.dp).fillMaxHeight()
+            modifier = Modifier
+                .width(280.dp)
+                .fillMaxHeight()
         ) {
-            Image(
-                painter = painterResource(R.drawable.umbrella1),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(RectangleShape)
-            )
+//            Image(
+//                painter = painterResource(R.drawable.umbrella1),
+//                contentDescription = null,
+//                contentScale = ContentScale.Crop,
+//                modifier = Modifier
+//                    .size(100.dp)
+//                    .clip(RectangleShape)
+//            )
+            PickImageFromGallery2(postViewModel = postViewModel)
 //            if (post.itemImage == null) {
 //                bitmap.value = BitmapFactory.decodeResource(
 //                    context.getResources(),

@@ -17,27 +17,31 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ss_team2.presentation.ui.PickImageFromGallery
+import com.example.ss_team2.presentation.viewModel.UserViewModel
 
 @Composable
 fun UserCard(
     modifier: Modifier = Modifier,
     userName: String,
     @DrawableRes drawable: Int,
+    userViewModel: UserViewModel
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Image(
-            painter = painterResource(drawable),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(60.dp)
-                .padding(8.dp)
-                .clip(CircleShape)
-        )
+//        Image(
+//            painter = painterResource(drawable),
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .size(60.dp)
+//                .padding(8.dp)
+//                .clip(CircleShape)
+//        )
+        PickImageFromGallery(userViewModel = userViewModel)
         Text(
             text = userName,
             fontSize = 16.sp,

@@ -62,7 +62,8 @@ fun LostListFinalScreen(
         PostListLazyScreen(
             postOwner = otherUser.userName,
             helperViewModel = helperViewModel,
-            postViewModel = postViewModel
+            postViewModel = postViewModel,
+            userViewModel = userViewModel
         )
     }
 }

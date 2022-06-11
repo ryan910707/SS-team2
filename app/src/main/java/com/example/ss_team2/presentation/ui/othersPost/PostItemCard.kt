@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ss_team2.R
+import com.example.ss_team2.presentation.ui.PickImageFromGallery2
 import com.example.ss_team2.presentation.ui.utility.WhatAndWhereColElement
 import com.example.ss_team2.presentation.viewModel.PostViewModel
 import com.example.ss_team2.ui.theme.TextGray
@@ -51,15 +52,16 @@ fun PostItemCard(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.defaultpicture),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(200.dp)
-                .clip(RectangleShape)
-        )
+        PickImageFromGallery2(postViewModel = postViewModel)
+//        Image(
+//            painter = painterResource(id = R.drawable.defaultpicture),
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .fillMaxHeight()
+//                .width(200.dp)
+//                .clip(RectangleShape)
+//        )
 //        if (post.itemImage == null) {
 //            bitmap.value = BitmapFactory.decodeResource(
 //                context.getResources(),

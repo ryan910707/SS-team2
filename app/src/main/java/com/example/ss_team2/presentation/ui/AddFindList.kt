@@ -158,7 +158,7 @@ fun PickImageFromGallery2(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(4.dp)
-                    .clip(CircleShape)
+                    .clip(RectangleShape)
                     .width(120.dp)
                     .height(120.dp)
                     .clickable {

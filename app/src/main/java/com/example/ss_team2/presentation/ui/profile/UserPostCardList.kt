@@ -35,6 +35,7 @@ fun UserPostCardList(
                 UserPostCard(
                     what = item.itemType,
                     where = item.location,
+                    postViewModel = postViewModel,
                     type = item.postType,
                     onClick = {
                         helperViewModel.getAllPostHelpers(item.postId)
