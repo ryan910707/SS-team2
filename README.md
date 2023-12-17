@@ -1,4 +1,4 @@
-# Treaure Finding NTHU
+# Treasure Finding NTHU
 ## contributer
 * 葛奕宣
 * 陳家輝
